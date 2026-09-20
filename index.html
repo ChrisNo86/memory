@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memory</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;600;700&family=Klee+One:wght@400;600&family=Orbitron:wght@500;700&family=Red+Rose:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./src/styles/main.css?v=3" />
+    <script type="module" src="./dist/main.js?v=3"></script>
+  </head>
+  <body>
+    <main class="app">
+      <!-- Home -->
+      <section class="screen screen--home" data-screen="home">
+        <span class="home__watermark" data-icon="controller" aria-hidden="true"></span>
+        <div class="home__content">
+          <p class="home__eyebrow">It&rsquo;s play time.</p>
+          <h1 class="home__title">Ready to play?</h1>
+          <button class="button button--primary" type="button" data-action="start">
+            <span class="button__icon" data-icon="controller" aria-hidden="true"></span>
+            Play
+            <span class="button__icon" data-icon="arrow" aria-hidden="true"></span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Settings -->
+      <section class="screen screen--settings" data-screen="settings" hidden>
+        <div class="settings__layout">
+          <div class="settings__column">
+            <h1 class="settings__title">Settings</h1>
+            <fieldset class="settings__group" data-group="theme">
+              <legend class="settings__legend">
+                <span class="settings__legend-icon settings__legend-icon--theme" data-icon="palette" aria-hidden="true"></span>
+                Game themes
+              </legend>
+              <div class="settings__options"></div>
+            </fieldset>
+            <fieldset class="settings__group" data-group="player">
+              <legend class="settings__legend">
+                <span class="settings__legend-icon settings__legend-icon--player" data-icon="pawn" aria-hidden="true"></span>
+                Choose player
+              </legend>
+              <div class="settings__options"></div>
+            </fieldset>
+            <fieldset class="settings__group" data-group="board-size">
+              <legend class="settings__legend">
+                <span class="settings__legend-icon settings__legend-icon--board" data-icon="cards" aria-hidden="true"></span>
+                Board size
+              </legend>
+              <div class="settings__options"></div>
+            </fieldset>
+          </div>
+
+          <div class="settings__column settings__column--preview">
+            <div class="preview" data-ref="preview" aria-hidden="true">
+              <div class="preview__bar">
+                <div class="preview__scores" data-ref="preview-scores"></div>
+                <span class="preview__turn" data-ref="preview-turn"></span>
+                <span class="preview__exit">
+                  <span class="preview__exit-icon" data-icon="exit"></span>
+                  Exit game
+                </span>
+              </div>
+              <div class="preview__cards">
+                <div class="preview__card preview__card--back">
+                  <span class="preview__icon" data-icon="screen-code"></span>
+                </div>
+                <div class="preview__card preview__card--front">
+                  <img class="preview__image" data-ref="preview-symbol" alt="" />
+                </div>
+              </div>
+            </div>
+            <div class="summary" data-ref="summary">
+              <span class="summary__item" data-ref="summary-theme"></span>
+              <span class="summary__divider" aria-hidden="true"></span>
+              <span class="summary__item" data-ref="summary-player"></span>
+              <span class="summary__divider" aria-hidden="true"></span>
+              <span class="summary__item" data-ref="summary-size"></span>
+              <button class="button button--primary button--small" type="button" data-action="play">
+                <span class="button__icon" data-icon="play" aria-hidden="true"></span>
+                Start
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Game -->
+      <section class="screen screen--game" data-screen="game" hidden>
+        <header class="topbar">
+          <div class="scoreboard" data-ref="scoreboard"></div>
+          <p class="topbar__turn" aria-live="polite" data-ref="turn-indicator"></p>
+          <button class="button button--exit" type="button" data-action="exit-game">
+            <span class="button__icon" data-icon="exit" aria-hidden="true"></span>
+            Exit game
+          </button>
+        </header>
+        <div class="board" data-ref="board"></div>
+
+        <dialog class="dialog" data-ref="quit-dialog">
+          <h2 class="dialog__title">Are you sure you want to quit the game?</h2>
+          <div class="dialog__actions">
+            <button class="button button--accent" type="button" data-action="resume">No, back to game</button>
+            <button class="button button--outline" type="button" data-action="confirm-quit">Yes, quit game</button>
+          </div>
+        </dialog>
+      </section>
+
+      <!-- Game over -->
+      <section class="screen screen--game-over" data-screen="game-over" hidden>
+        <h1 class="game-over__title">Game over</h1>
+        <p class="game-over__label">Final score</p>
+        <div class="score-chip" data-ref="final-score"></div>
+      </section>
+
+      <!-- Winner / Draw -->
+      <section class="screen screen--result" data-screen="result" hidden>
+        <div class="confetti" data-ref="confetti" aria-hidden="true"></div>
+        <p class="result__eyebrow" data-ref="result-eyebrow"></p>
+        <h1 class="result__title" data-ref="result-title"></h1>
+        <span class="result__icon" data-ref="result-icon" aria-hidden="true"></span>
+        <div class="result__actions">
+          <button class="button button--result" type="button" data-action="new-round">New round</button>
+          <button class="button button--result" type="button" data-action="home">Home</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
